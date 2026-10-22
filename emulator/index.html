@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>School Arcade - Emulator</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #10131c;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    header {
+      height: 48px;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      background: #191e2b;
+    }
+    a { color: #9cbaff; }
+    iframe {
+      display: block;
+      width: 100%;
+      height: calc(100vh - 48px);
+      border: 0;
+      background: #10131c;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="/">← Back to School Arcade</a>
+  </header>
+  <iframe
+    src="https://josepilas.github.io/pilas-melonds/"
+    title="Nintendo DS Emulator"
+    allow="autoplay; fullscreen"
+    allowfullscreen>
+  </iframe>
+</body>
+</html>
