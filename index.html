@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>School Arcade</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #10111b;
+      color: #f5f5ff;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      padding: 24px;
+      background: #191b2b;
+      border-bottom: 1px solid #303249;
+    }
+
+    header h1 {
+      margin: 0;
+      color: #a5b4fc;
+    }
+
+    header p {
+      color: #b6b8ce;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 24px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 24px;
+      border: 1px solid #41435c;
+      border-radius: 10px;
+      background: #191b2b;
+      color: white;
+      font-size: 16px;
+    }
+
+    .tiles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .tile {
+      padding: 22px;
+      min-height: 130px;
+      background: #191b2b;
+      border: 1px solid #303249;
+      border-radius: 12px;
+    }
+
+    .tile h2 {
+      margin-top: 0;
+      color: #c4b5fd;
+    }
+
+    .tile p {
+      color: #b6b8ce;
+    }
+
+    footer {
+      padding: 24px;
+      color: #888ba7;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>School Arcade</h1>
+    <p>Your little corner of the internet. Pick something and have fun.</p>
+  </header>
+
+  <main>
+    <input
+      id="search"
+      type="search"
+      placeholder="Search..."
+      aria-label="Search titles"
+    >
+
+    <div class="tiles" id="tiles">
+      <article class="tile">
+        <h2>Snake</h2>
+        <p>Guide the snake, eat food, and beat your high score.</p>
+      </article>
+
+      <article class="tile">
+        <h2>Puzzle Zone</h2>
+        <p>A spot for brain teasers and logic challenges.</p>
+      </article>
+
+      <article class="tile">
+        <h2>Arcade Classics</h2>
+        <p>A home for quick challenges and old-school favorites.</p>
+      </article>
+    </div>
+  </main>
+
+  <footer>School Arcade · Made for fun</footer>
+
+  <script>
+    const search = document.getElementById("search");
+    const tiles = document.querySelectorAll(".tile");
+
+    search.addEventListener("input", () => {
+      const query = search.value.toLowerCase();
+
+      tiles.forEach((tile) => {
+        tile.hidden = !tile.textContent.toLowerCase().includes(query);
+      });
+    });
+  </script>
+</body>
+</html>
