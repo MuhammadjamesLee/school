@@ -1,244 +1,151 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>School Arcade</title>
+  <title>Havingood</title>
+
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
-      background: #10111b;
-      color: #f5f5ff;
+      background: #101010;
+      color: #eeeeee;
       font-family: Arial, sans-serif;
     }
 
     header {
-      padding: 24px;
-      background: #191b2b;
-      border-bottom: 1px solid #303249;
+      padding: 22px 24px;
+      border-bottom: 1px solid #303030;
     }
 
-    header h1 { margin: 0; color: #a5b4fc; }
-    header p { color: #b6b8ce; }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 500;
+    }
 
     main {
       max-width: 1100px;
-      margin: auto;
-      padding: 24px;
+      margin: 0 auto;
+      padding: 32px 24px;
     }
 
-    input {
-      width: 100%;
-      padding: 14px;
-      margin-bottom: 24px;
-      border: 1px solid #41435c;
-      border-radius: 10px;
-      background: #191b2b;
-      color: white;
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 260px;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .entry {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .card {
+      width: 220px;
+      height: 96px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      background: #161616;
+      border: 1px solid #353535;
+      color: #eeeeee;
+      text-decoration: none;
+      text-align: center;
       font-size: 16px;
     }
 
-    .tiles {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
+    .card:hover,
+    .card:focus-visible {
+      border-color: #888888;
     }
 
-    .tile {
-      padding: 22px;
-      min-height: 130px;
-      background: #191b2b;
-      border: 1px solid #303249;
-      border-radius: 12px;
+    .cover-art {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      border: 1px solid #353535;
+      background: #161616;
     }
 
-    button.tile {
-      width: 100%;
-      color: inherit;
-      font: inherit;
-      text-align: left;
-      cursor: pointer;
-      transition: border-color .15s, transform .15s;
+    .note {
+      padding: 4px 0 4px 20px;
+      border-left: 1px solid #353535;
+      color: #bbbbbb;
+      line-height: 1.6;
     }
 
-    button.tile:hover {
-      border-color: #a5b4fc;
-      transform: translateY(-2px);
-    }
-
-    .tile h2 { margin-top: 0; color: #c4b5fd; }
-    .tile p { color: #b6b8ce; }
-
-    footer {
-      padding: 24px;
-      color: #888ba7;
-      text-align: center;
-    }
-
-    .popup {
-      position: fixed;
-      inset: 0;
-      z-index: 10;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-      background: #000c;
-    }
-
-    .popup.open { display: flex; }
-
-    .popup-panel {
-      display: flex;
-      flex-direction: column;
-      width: min(1200px, 100%);
-      height: min(850px, 95vh);
-      background: #10131c;
-      border: 1px solid #41435c;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .popup-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 12px 16px;
-      background: #191e2b;
-    }
-
-    .popup-bar h2 {
+    .note p {
       margin: 0;
-      font-size: 17px;
     }
 
-    .close-button {
-      padding: 8px 13px;
-      border: 0;
-      border-radius: 7px;
-      background: #343850;
-      color: white;
-      cursor: pointer;
+    @media (max-width: 700px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .note {
+        padding: 18px 0 0;
+        border-left: 0;
+        border-top: 1px solid #353535;
+      }
     }
 
-    .popup iframe {
-      flex: 1;
-      width: 100%;
-      min-height: 0;
-      border: 0;
-      background: #10131c;
-    }
+    @media (max-width: 420px) {
+      .entry {
+        gap: 10px;
+      }
 
-    body.popup-open { overflow: hidden; }
+      .card {
+        width: 180px;
+      }
 
-    @media (max-width: 600px) {
-      .popup { padding: 0; }
-      .popup-panel {
-        width: 100%;
-        height: 100%;
-        border-radius: 0;
+      .cover-art {
+        width: 85px;
+        height: 95px;
       }
     }
   </style>
 </head>
+
 <body>
   <header>
-    <h1>School Arcade</h1>
-    <p>Your little corner of the internet. Pick something and have fun.</p>
+    <h1>Havingood</h1>
   </header>
 
   <main>
-    <input
-      id="search"
-      type="search"
-      placeholder="Search..."
-      aria-label="Search titles"
-    >
+    <div class="layout">
+      <section aria-label="Available titles">
+        <div class="entry">
+          <a
+            class="card"
+            href="https://trasheap.netlify.app/?rom=PMBlack2.nds"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Pokémon Black 2
+          </a>
 
-    <div class="tiles" id="tiles">
-      <button class="tile" type="button" data-title="Pokémon Black 2" data-open="ds">
-        <h2>Pokémon Black 2</h2>
-        <p>Open the Nintendo DS emulator.</p>
-      </button>
+          <img
+            class="cover-art"
+            src="https://archives.bulbagarden.net/media/upload/3/34/Black_2_EN_boxart.png"
+            alt="Pokémon Black Version 2 official cover art"
+          >
+        </div>
+      </section>
 
-      <article class="tile">
-        <h2>Snake</h2>
-        <p>Guide the snake, eat food, and beat your high score.</p>
-      </article>
-
-      <article class="tile">
-        <h2>Puzzle Zone</h2>
-        <p>A spot for brain teasers and logic challenges.</p>
-      </article>
-
-      <article class="tile">
-        <h2>Arcade Classics</h2>
-        <p>A home for quick challenges and old-school favorites.</p>
-      </article>
+      <aside class="note">
+        <p>finding unblocked sites sucks so i just made one.</p>
+      </aside>
     </div>
   </main>
-
-  <footer>School Arcade · Made for fun</footer>
-
-  <div class="popup" id="popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
-    <div class="popup-panel">
-      <div class="popup-bar">
-        <h2 id="popup-title">Pokémon Black 2</h2>
-        <button class="close-button" id="close-popup" type="button">Close</button>
-      </div>
-      <iframe
-        id="emulator-frame"
-        title="Nintendo DS emulator"
-        allow="autoplay; fullscreen"
-        allowfullscreen>
-      </iframe>
-    </div>
-  </div>
-
-  <script>
-    const search = document.getElementById("search");
-    const tiles = document.querySelectorAll(".tile");
-    const popup = document.getElementById("popup");
-    const closeButton = document.getElementById("close-popup");
-    const frame = document.getElementById("emulator-frame");
-
-    search.addEventListener("input", () => {
-      const query = search.value.toLowerCase();
-
-      tiles.forEach((tile) => {
-        tile.hidden = !tile.textContent.toLowerCase().includes(query);
-      });
-    });
-
-    document.querySelector('[data-open="ds"]').addEventListener("click", () => {
-  window.open(
-    "https://trasheap.netlify.app/?rom=PMBlack2.nds",
-    "_blank",
-    "noopener,noreferrer"
-  );
-});
-
-    function closePopup() {
-      popup.classList.remove("open");
-      document.body.classList.remove("popup-open");
-      frame.src = "";
-    }
-
-    closeButton.addEventListener("click", closePopup);
-
-    popup.addEventListener("click", (event) => {
-      if (event.target === popup) closePopup();
-    });
-
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && popup.classList.contains("open")) {
-        closePopup();
-      }
-    });
-  </script>
 </body>
 </html>
