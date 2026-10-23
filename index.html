@@ -215,11 +215,12 @@
     });
 
     document.querySelector('[data-open="ds"]').addEventListener("click", () => {
-      frame.src = "https://trasheap.netlify.app/?rom=PMBlack2.nds";
-      popup.classList.add("open");
-      document.body.classList.add("popup-open");
-      closeButton.focus();
-    });
+  window.open(
+    "https://trasheap.netlify.app/?rom=PMBlack2.nds",
+    "_blank",
+    "noopener,noreferrer"
+  );
+});
 
     function closePopup() {
       popup.classList.remove("open");
